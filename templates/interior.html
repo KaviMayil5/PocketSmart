@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PocketSmart - Interior Plan</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+
+        .header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .box {
+            background: white;
+            max-width: 500px;
+            margin: 35px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 94%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .item {
+            background: #f8f8f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .total {
+            background: #333;
+            color: white;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .success {
+            background: #e8f5e9;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .warning {
+            background: #fff3cd;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🏠 PocketSmart</h1>
+    <p>Interior Planning System</p>
+</div>
+
+<div class="box">
+
+    <h2>🏠 Interior Budget Planner</h2>
+
+    <label>Select Room</label>
+
+    <select id="room">
+        <option>Living Room</option>
+        <option>Bedroom</option>
+        <option>Kitchen</option>
+    </select>
+
+    <label>Enter Your Budget</label>
+
+    <input type="number" id="budget" placeholder="Example: 8000">
+
+    <button onclick="createPlan()">
+        Create Interior Plan
+    </button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+function money(value) {
+    return "₹" + Math.round(value).toLocaleString("en-IN");
+}
+
+
+function createPlan() {
+
+    let room = document.getElementById("room").value;
+    let budget = Number(document.getElementById("budget").value);
+
+    if (budget <= 0) {
+
+        document.getElementById("result").innerHTML =
+            "<div class='warning'>Please enter a valid budget.</div>";
+
+        return;
+    }
+
+
+    /*
+       Budget percentage allocation
+    */
+
+    let sofa = budget * 0.30;
+    let table = budget * 0.08;
+    let tv = budget * 0.20;
+    let lighting = budget * 0.10;
+    let curtains = budget * 0.07;
+    let decoration = budget * 0.10;
+    let painting = budget * 0.15;
+
+
+    let total =
+        sofa +
+        table +
+        tv +
+        lighting +
+        curtains +
+        decoration +
+        painting;
+
+
+    let content = "";
+
+    content += "<h3>📋 " + room + " Plan</h3>";
+
+    content +=
+        "<div class='item'>" +
+        "<span>🛋️ Sofa</span>" +
+        "<b>" + money(sofa) + "</b>" +
+        "</div>";
+
+    content +=
+        "<div class='item'>" +
+        "<span>🪑 Center Table</span>" +
+        "<b>" + money(table) + "</b>" +
+        "</div>";
+
+    content +=
+        "<div class='item'>" +
+        "<span>📺 TV Unit</span>" +
+        "<b>" + money(tv) + "</b>" +
+        "</div>";
+
+    content +=
+        "<div class='item'>" +
+        "<span>💡 Lighting</span>" +
+        "<b>" + money(lighting) + "</b>" +
+        "</div>";
+
+    content +=
+        "<div class='item'>" +
+        "<span>🪟 Curtains</span>" +
+        "<b>" + money(curtains) + "</b>" +
+        "</div>";
+
+    content +=
+        "<div class='item'>" +
+        "<span>🎨 Wall Decoration</span>" +
+        "<b>" + money(decoration) + "</b>" +
+        "</div>";
+
+    content +=
+        "<div class='item'>" +
+        "<span>🖌️ Painting</span>" +
+        "<b>" + money(painting) + "</b>" +
+        "</div>";
+
+
+    content +=
+        "<div class='total'>" +
+        "💰 Total Planned Budget: " +
+        money(total) +
+        "</div>";
+
+
+    content +=
+        "<div class='success'>" +
+        "✅ Your ₹" +
+        budget.toLocaleString("en-IN") +
+        " budget has been planned successfully!" +
+        "</div>";
+
+
+    document.getElementById("result").innerHTML = content;
+}
+
+</script>
+
+</body>
+</html>

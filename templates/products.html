@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>PocketSmart - Find Products</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+
+        .header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .box {
+            background: white;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .details {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .shop {
+            display: block;
+            margin: 15px 0;
+            padding: 15px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .shop:hover {
+            background: #555;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 15px;
+            color: #333;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+    <h1>🛍️ PocketSmart</h1>
+
+    <p>Find Products Online</p>
+
+</div>
+
+
+
+<div class="box">
+
+    <h2>💎 Your Product Search</h2>
+
+
+    <div class="details">
+
+        <p>
+            Jewelry:
+            <b>{{ jewelry_type }}</b>
+        </p>
+
+        <p>
+            Metal:
+            <b>{{ metal }}</b>
+        </p>
+
+        <p>
+            Budget:
+            <b>₹{{ price }}</b>
+        </p>
+
+    </div>
+
+
+    <h3 id="searchTitle">
+        Find Products Online
+    </h3>
+
+
+    <!-- Myntra -->
+
+    <a
+        class="shop"
+        id="myntraLink"
+        href="#"
+        target="_blank">
+
+        🛍️ Search on Myntra
+
+    </a>
+
+
+
+    <!-- Meesho -->
+
+    <a
+        class="shop"
+        id="meeshoLink"
+        href="#"
+        target="_blank">
+
+        🛍️ Search on Meesho
+
+    </a>
+
+
+
+    <!-- Flipkart -->
+
+    <a
+        class="shop"
+        id="flipkartLink"
+        href="#"
+        target="_blank">
+
+        🛒 Search on Flipkart
+
+    </a>
+
+
+    <a
+        class="back"
+        href="/jewelry">
+
+        ← Back to Jewelry Planner
+
+    </a>
+
+
+</div>
+
+
+
+<script>
+
+
+// Get values from Flask
+
+let jewelry = "{{ jewelry_type }}";
+
+let metal = "{{ metal }}";
+
+let price = "{{ price }}";
+
+
+
+// Create search word
+
+let searchText = metal + " " + jewelry;
+
+
+
+// Convert search text for URL
+
+let searchQuery = encodeURIComponent(searchText);
+
+
+
+// Show the exact search
+
+document.getElementById("searchTitle").innerHTML =
+    "Find " + metal + " " + jewelry + " Products Online";
+
+
+
+// -------------------------
+// MYNTRA
+// -------------------------
+
+document.getElementById("myntraLink").href =
+    "https://www.myntra.com/" + jewelry.toLowerCase();
+
+
+
+// -------------------------
+// MEESHO
+// -------------------------
+
+if (jewelry === "Ring") {
+
+    document.getElementById("meeshoLink").href =
+        "https://www.meesho.com/rings/pl/3lh";
+
+}
+
+else if (jewelry === "Necklace") {
+
+    document.getElementById("meeshoLink").href =
+        "https://www.meesho.com/necklaces/pl/3lh";
+
+}
+
+else if (jewelry === "Bracelet") {
+
+    document.getElementById("meeshoLink").href =
+        "https://www.meesho.com/bracelets/pl/3lh";
+
+}
+
+else if (jewelry === "Chain") {
+
+    document.getElementById("meeshoLink").href =
+        "https://www.meesho.com/necklaces/pl/3lh";
+
+}
+
+
+
+// -------------------------
+// FLIPKART
+// -------------------------
+
+document.getElementById("flipkartLink").href =
+    "https://www.flipkart.com/search?q=" + searchQuery;
+
+
+
+</script>
+
+
+</body>
+
+</html>

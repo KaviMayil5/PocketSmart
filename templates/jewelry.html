@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>PocketSmart - Jewelry Plan</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+
+        .header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .box {
+            background: white;
+            width: 380px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        .link-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .product-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+    <h1>💎 PocketSmart</h1>
+
+    <p>Jewelry Planner</p>
+
+</div>
+
+
+
+<div class="box">
+
+    <h2>Find Your Jewelry</h2>
+
+
+    <label>Select Jewelry</label>
+
+    <select id="jewelry">
+
+        <option value="Ring">💍 Ring</option>
+
+        <option value="Chain">📿 Chain</option>
+
+        <option value="Necklace">📿 Necklace</option>
+
+        <option value="Bracelet">✨ Bracelet</option>
+
+    </select>
+
+
+
+    <label>Select Metal</label>
+
+    <select id="metal">
+
+        <option value="Gold">🥇 Gold</option>
+
+        <option value="Silver">⚪ Silver</option>
+
+    </select>
+
+
+
+    <label>Enter Your Budget</label>
+
+    <input
+        type="number"
+        id="price"
+        placeholder="Example: 50000"
+        min="1">
+
+
+    <br>
+
+
+    <button onclick="findJewelry()">
+
+        🔍 Search Jewelry
+
+    </button>
+
+
+    <div id="result"></div>
+
+
+</div>
+
+
+
+<script>
+
+
+function findJewelry() {
+
+
+    let jewelry =
+        document.getElementById("jewelry").value;
+
+
+    let metal =
+        document.getElementById("metal").value;
+
+
+    let price =
+        document.getElementById("price").value;
+
+
+
+    // Check budget
+
+    if (price === "" || Number(price) <= 0) {
+
+        document.getElementById("result").innerHTML =
+
+            "<div class='link-box'>" +
+
+            "⚠️ Please enter a valid budget." +
+
+            "</div>";
+
+        return;
+
+    }
+
+
+
+    // Create products page URL
+
+    let url =
+        "/products?type=" +
+        encodeURIComponent(jewelry) +
+
+        "&metal=" +
+        encodeURIComponent(metal) +
+
+        "&price=" +
+        encodeURIComponent(price);
+
+
+
+    document.getElementById("result").innerHTML =
+
+        "<div class='link-box'>" +
+
+        "<b>✅ Jewelry Selected!</b>" +
+
+        "<br><br>" +
+
+        "💎 Jewelry: " + jewelry +
+
+        "<br>" +
+
+        "🥇 Metal: " + metal +
+
+        "<br>" +
+
+        "💰 Budget: ₹" + Number(price).toLocaleString("en-IN") +
+
+        "<br><br>" +
+
+        "<a class='product-link' href='" +
+
+        url +
+
+        "'>" +
+
+        "🛍️ View Online Products" +
+
+        "</a>" +
+
+        "</div>";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

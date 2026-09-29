@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PocketSmart - Plans</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: #333;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            width: 230px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 7px;
+            background: #333;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>✨ PocketSmart</h1>
+    <p>Smart Planning System</p>
+</div>
+
+<div class="container">
+
+    <h2>Choose Your Plan</h2>
+    <p>Select a plan to continue</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>🏠</h2>
+            <h3>Interior Plan</h3>
+            <p>Plan your living room and interior.</p>
+
+            <a href="/interior">
+                <button>Open Plan</button>
+            </a>
+        </div>
+
+
+        <div class="card">
+            <h2>💎</h2>
+            <h3>Jewelry Plan</h3>
+            <p>Find jewelry according to your budget.</p>
+
+            <a href="/jewelry">
+                <button>Open Plan</button>
+            </a>
+        </div>
+
+
+        <div class="card">
+            <h2>🎉</h2>
+            <h3>Party Plan</h3>
+            <p>Plan your party and expenses.</p>
+
+            <a href="/party">
+                <button>Open Plan</button>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
